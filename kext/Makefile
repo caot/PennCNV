@@ -7,7 +7,9 @@ SHELL = /bin/sh
 
 CC = gcc
 LD = gcc
-CFLAGS = `perl -MExtUtils::Embed -e ccopts` -fPIC
+# perl-5.22
+INC=-I/usr/lib64/perl5/CORE
+CFLAGS = `perl -MExtUtils::Embed -e ccopts` -fPIC $(INC) -Doff64_t=__off64_t
 LDFLAGS = `perl -MExtUtils::Embed -e ldopts`
 ARCH = `perl -MConfig -e 'print $$Config{archname}'`
 VER = `perl -MConfig -e 'print $$Config{version}'`
